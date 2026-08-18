@@ -523,6 +523,62 @@ tbody tr:hover {
   font-size: 11px;
 }
 
+/* ---------- Destructive actions: keep them red, not brand green ---------- */
+:root {
+  --danger: #c43d49;
+  --danger-soft: #fdf0f1;
+}
+[data-theme='dark'] {
+  --danger: #e57e88;
+  --danger-soft: #351f24;
+}
+.danger,
+.danger svg {
+  color: var(--danger);
+}
+.danger-text,
+.danger-text b {
+  color: var(--danger) !important;
+}
+
+/* ---------- Success / warning chips: brand-aligned + dark mode ---------- */
+.mapping header > span,
+.import-success > span,
+.import-confirm > div > span,
+.history-table td:last-child span,
+.profile-page > header i,
+.account-status {
+  background: var(--brand-soft);
+  color: var(--brand-deep);
+}
+[data-theme='dark'] .mapping header > span,
+[data-theme='dark'] .import-success > span,
+[data-theme='dark'] .import-confirm > div > span,
+[data-theme='dark'] .history-table td:last-child span,
+[data-theme='dark'] .profile-page > header i,
+[data-theme='dark'] .account-status {
+  color: var(--brand);
+}
+[data-theme='dark'] .import-confirm > div > span.warning {
+  background: #33291a;
+  color: #d8a558;
+}
+[data-theme='dark'] .admin-notice {
+  background: #2b2415;
+  color: #d8b06a;
+}
+[data-theme='dark'] .issues {
+  background: #351f24;
+  border-color: #6d3037;
+}
+[data-theme='dark'] .reset-modal > div > header > span {
+  background: #33291a;
+  color: #d8a558;
+}
+.data-reset {
+  border-color: color-mix(in srgb, var(--danger) 26%, var(--border));
+}
+
 /* ---------- Focus rings ---------- */
 .primary:focus-visible,
 .secondary:focus-visible,
