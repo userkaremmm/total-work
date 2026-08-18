@@ -24,6 +24,7 @@
   --grid: #eef0ea;
   --hover: #f2f4ef;
   --chart-muted: #dfe4dc;
+  --chart-alt: #a9d8bf;
   --sidebar: #ffffff;
   --radius: 16px;
   --shadow: 0 14px 40px rgba(22, 33, 27, 0.08);
@@ -48,6 +49,7 @@
   --grid: #273029;
   --hover: #212a25;
   --chart-muted: #35413a;
+  --chart-alt: #2f5c47;
   --sidebar: #141a17;
   --shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
   --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.22);
@@ -459,6 +461,66 @@ tbody tr:hover {
 }
 .recharts-default-tooltip {
   border-radius: 10px !important;
+}
+
+/* ---------- Visual polish fixes ---------- */
+/* Results-count icon in table tools was inheriting the absolute
+   positioning meant for the search-input icon and floated off-panel. */
+.table-tools > span svg {
+  position: static;
+  top: auto;
+  left: auto;
+  flex: none;
+}
+.table-tools > span {
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* KPI cards: prevent clipped labels/values in narrow columns. */
+.kpis > article {
+  height: auto;
+  min-height: 125px;
+}
+.kpis section {
+  flex: 1;
+  min-width: 0;
+}
+.kpis small {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.3;
+}
+.kpis b.kpi-value {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: clamp(15px, 1.3cqw + 8px, 20px);
+}
+.kpis i {
+  white-space: normal;
+  line-height: 1.35;
+}
+@media (max-width: 1599px) {
+  .kpis {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 650px) {
+  .kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 430px) {
+  .kpis {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Chart axis ticks: consistent compact size in both themes. */
+.recharts-cartesian-axis-tick text {
+  font-size: 11px;
 }
 
 /* ---------- Focus rings ---------- */
